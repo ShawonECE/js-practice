@@ -11,10 +11,27 @@
     
 // }
 
-setTimeout(() => {
-    console.log('I am waiting for 5 seconds...');
-}, 5000);
+// setTimeout(() => {
+//     console.log('I am waiting for 5 seconds...');
+// }, 5000);
 
-setTimeout(() => {
-    console.log('I am waiting for 2 seconds...');
-}, 2000);
+// setTimeout(() => {
+//     console.log('I am waiting for 2 seconds...');
+// }, 2000);
+
+// let a = 1;
+
+// const change = (val) => {
+//     val++;
+// };
+
+// change(a);
+
+// console.log(a);
+
+let a = 23;
+let b = {name: "shawon"};
+
+[a, b] = [b, a];
+
+console.log(a, b);
