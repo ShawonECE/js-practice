@@ -1,4 +1,4 @@
-const list =[4, 45, 6, 12, 5, 1, 3, 9, 75, 65, 100, 4, 23, 10];
+const list = [4, 45, 6, 12, 5, 1, 3, 9, 75, 65, 100, 4, 23, 10];
 
 const sortAscending = (list) => {
     const array = [...list];
