@@ -23,15 +23,25 @@ class Queue {
         this.tail = 0;
     }
 
+    get size() {
+        return this.tail - this.head;
+    }
+    get isEmpty() {
+        return this.head === this.tail;
+    }
     enqueue(item) {
         this.queue[this.tail] = item;
         this.tail++;
     }
     dequeue() {
-        if (this.tail > this.head) {
+        if (!this.isEmpty) {
             let dequeueItem = this.queue[this.head];
             delete this.queue[this.head];
             this.head++;
+            if (this.isEmpty) {
+                this.head = 0;
+                this.tail = 0;
+            }
             return dequeueItem;
         }
         return null;
@@ -44,7 +54,12 @@ list.enqueue('Shawon');
 list.enqueue('Nipun');
 list.enqueue('Abdullah');
 
-const dequeuedOne = list.dequeue();
-
-console.log(dequeuedOne);
+console.log(list.queue);
+console.log(list.size);
+console.log(list.dequeue());
+console.log(list.dequeue());
+console.log(list.dequeue());
+console.log(list.dequeue());
+console.log(list.size);
+console.log(list.isEmpty);
 console.log(list);
