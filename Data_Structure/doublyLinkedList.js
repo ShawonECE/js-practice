@@ -2,10 +2,11 @@ class Node {
     constructor(value) {
         this.value = value;
         this.next = null;
+        this.previous = null;
     }
 }
 
-class SinglyLinkedList {
+class DoublyLinkedList {
     constructor() {
         this.head = null;
         this.tail = null;
@@ -24,6 +25,7 @@ class SinglyLinkedList {
         }
         else {
             this.tail.next = newNode;
+            newNode.previous = this.tail;
             this.tail = newNode;
         }
         this.length++;
@@ -37,6 +39,7 @@ class SinglyLinkedList {
         }
         else {
             newNode.next = this.head;
+            this.head.previous = newNode;
             this.head = newNode;
         }
         this.length++;
@@ -56,8 +59,11 @@ class SinglyLinkedList {
             for (let i = 0; i < index - 1; i++) {
                 previousNode = previousNode.next;
             }
-            newNode.next = previousNode.next;
+            let nextNode = previousNode.next;
+            newNode.next = nextNode;
+            newNode.previous = previousNode;
             previousNode.next = newNode;
+            nextNode.previous = newNode;
             this.length++;
         }
     }
@@ -70,16 +76,23 @@ class SinglyLinkedList {
         if (index === 0) {
             removedNode = this.head;
             this.head = this.head.next;
+            this.head.previous = null;
         } else {
             let previousNode = this.head;
             for (let i = 0; i < index - 1; i++) {
                 previousNode = previousNode.next;                
             }
             removedNode = previousNode.next;
-            previousNode.next = removedNode.next;
-            if (index === this.length - 1) {
+            let nextNode = removedNode.next;
+            previousNode.next = nextNode;
+            if (nextNode) {
+                nextNode.previous = previousNode;
+            } else {
                 this.tail = previousNode;
             }
+            // if (index === this.length - 1) {
+            //     this.tail = previousNode;
+            // }
         }
         this.length--;
         return removedNode.value;
@@ -110,26 +123,36 @@ class SinglyLinkedList {
         }
         while (this.head && this.head.value === value) {
             this.head = this.head.next;
+            if (this.head) {
+                this.head.previous = null;
+            }
             this.length--;
         }
         if (this.isEmpty()) {
             this.tail = null;
             return;
         }
-        let previousNode = this.head;
         let currentNode = this.head.next;
+        let previousNode, nextNode;
+        //let previousNode = this.head;
+        //let nextNode = currentNode.next;
         while (currentNode) {
+            previousNode = currentNode.previous;
+            nextNode = currentNode.next;
             if (currentNode.value === value) {
-                previousNode.next = currentNode.next;
-                if (currentNode === this.tail) {
+                previousNode.next = nextNode;
+                if (nextNode) {
+                    nextNode.previous = previousNode;
+                } else {
                     this.tail = previousNode;
                 }
-                currentNode = currentNode.next;
+                // if (currentNode === this.tail) {
+                //     this.tail = previousNode;
+                // }
+                //currentNode = currentNode.next;
                 this.length--;
-            } else {
-                previousNode = currentNode;
-                currentNode = currentNode.next;
             }
+            currentNode = currentNode.next;
         }
     }
     search(value) {
@@ -148,16 +171,16 @@ class SinglyLinkedList {
     }
     reverse() {
         let currentNode = this.head;
-        let previousNode = null;
         this.tail = this.head;
-
+        let previousNode, nextNode;
         while (currentNode) {
-            let nextNode = currentNode.next;
+            previousNode = currentNode.previous;
+            nextNode = currentNode.next;
             currentNode.next = previousNode;
-            previousNode = currentNode;
+            currentNode.previous = nextNode;
             currentNode = nextNode;
         }
-        this.head = previousNode;
+        this.head = previousNode.previous;
     }
     print() {
         if (this.isEmpty()) {
@@ -174,18 +197,13 @@ class SinglyLinkedList {
     }
 }
 
-const list = new SinglyLinkedList();
+const list = new DoublyLinkedList();
 list.append(5);
-list.append(8);
-list.prepend(5);
-list.insert(5, 2);
-list.insert(5, 3);
-console.log(list);
+list.append(5);
+list.append(0);
+list.append(12);
 list.print();
-console.log(list.removeFrom(7));
-console.log(list.removeFrom(0));
-console.log(list.removeFrom(4));
-console.log(list.removeValue(7));
-list.removeEveryValue(5);
+console.log(list);
+list.reverse();
 console.log(list);
 list.print();
