@@ -18,4 +18,4 @@ const binarySearch = (array, element) => {
     return `Element not found`;
 };
 
-console.log(binarySearch(array, 50));
+console.log(binarySearch(array, 87));
