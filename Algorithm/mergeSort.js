@@ -1,4 +1,4 @@
-let myArray = [2, 68, -5, 7, 2, -10];
+let myArray = [54, 26, 93, 17, 77, 31, 44, 55, 20];
 
 const mergeSort = (array) => {
     let length = array.length;
