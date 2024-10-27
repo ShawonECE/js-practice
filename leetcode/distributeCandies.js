@@ -1,19 +1,19 @@
-const distributeBetweenTwo = (n, limit) => {
-    let ways = 0;
-    if (n === 0) {
-        return 0;
-    }
-    for (let i = Math.min(n, limit); i >= 0 ; i--) {
-        if (i > n - i) {
-            ways += 2;
-        } else if (i === n - i) {
-            ways += 1;
-            return ways;
-        } else {
-            return ways;
-        }
-    }
-};
+// const distributeBetweenTwo = (n, limit) => {
+//     let ways = 0;
+//     if (n === 0) {
+//         return 0;
+//     }
+//     for (let i = Math.min(n, limit); i >= 0 ; i--) {
+//         if (i > n - i) {
+//             ways += 2;
+//         } else if (i === n - i) {
+//             ways += 1;
+//             return ways;
+//         } else {
+//             return ways;
+//         }
+//     }
+// };
 
 // console.log(distributeBetweenTwo(3, 2));
 
