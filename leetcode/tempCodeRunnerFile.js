@@ -1,4 +1,2 @@
-if (!isDivisor(prefix, str1) || !isDivisor(prefix, str2)) {
-        //     console.log(prefix);
-        //     return gcd;
-        // }
+nums.splice(i, 1);
+            nums.push(0);
