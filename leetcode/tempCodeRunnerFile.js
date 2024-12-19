@@ -1,3 +1,2 @@
- // for (let i = minBirthYear; i < maxDeathYear; i++) {
-    //     const element = array[i];
-    // }
+newTail.next = null;
+    // tail.next = head;
