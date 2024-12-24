@@ -1,4 +1,4 @@
-const array = [1, 20, 26, 27, 30, 45, 50, 87]; // array needs to be in ascending order
+const array = [1, 20, 26, 27, 30, 45, 50, 87]; 
 
 const binarySearch = (array, element) => {
     let start = 0, end = array.length - 1;
