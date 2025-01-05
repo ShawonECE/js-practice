@@ -5,12 +5,12 @@ class Stack {
         this.top = - 1;
     }
 
-    add(item) {
+    push(item) {
         this.stack.push(item);
         this.top += 1;
     }
 
-    remove() {
+    pop() {
         if (this.stack.length) {
             this.top -= 1;
             return this.stack.pop();
@@ -41,12 +41,12 @@ class Stack {
 // }
 
 const list = new Stack();
-list.add('Shoaib');
-list.add('Shawon');
-list.add('Nipun');
-list.add('Abdullah');
+list.push('Shoaib');
+list.push('Shawon');
+list.push('Nipun');
+list.push('Abdullah');
 
-const removedOne = list.remove();
+const removedOne = list.pop();
 
 console.log(removedOne);
 console.log(list);

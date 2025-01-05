@@ -51,5 +51,5 @@ const sumSubarrayMins = (arr) => {
     return sum;
 };
 
-const arr = [1, 1];
+const arr = [11,81,94,43,3];
 console.log(sumSubarrayMins(arr));
