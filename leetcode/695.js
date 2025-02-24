@@ -35,7 +35,6 @@ const maxAreaOfIsland = (grid) => {
     }
 
     return maxSize;
-
 };
 
 const grid = [[0,0,0,0,0,0,0,0]];
