@@ -69,34 +69,40 @@ class MaxHeap {
 
     heapifyDown(index) {
         let largest = index;
-        const leftChildIndex = this.getLeftChildIndex(index);
-        const rightChildIndex = this.getRightChildIndex(index);
-
-        if (leftChildIndex < this.heap.length && this.compare(this.heap[leftChildIndex], this.heap[largest])) {
-            largest = leftChildIndex;
+        let leftChildIndex = this.getLeftChildIndex(index);
+        let rightChildIndex = this.getRightChildIndex(index);
+    
+        while (leftChildIndex < this.heap.length) {
+            if (this.compare(this.heap[leftChildIndex], this.heap[largest])) {
+                largest = leftChildIndex;
+            }
+    
+            if (rightChildIndex < this.heap.length && this.compare(this.heap[rightChildIndex], this.heap[largest])) {
+                largest = rightChildIndex;
+            }
+    
+            if (largest !== index) {
+                this.swap(index, largest);
+                index = largest;
+                leftChildIndex = this.getLeftChildIndex(index);
+                rightChildIndex = this.getRightChildIndex(index);
+            } else {
+                break;
+            }
         }
-
-        if (rightChildIndex < this.heap.length && this.compare(this.heap[rightChildIndex], this.heap[largest])) {
-            largest = rightChildIndex;
-        }
-
-        if (largest !== index) {
-            this.swap(index, largest);
-            this.heapifyDown(largest);
-        }
-    }
+    }    
 }
 
 // Example usage:
 const maxHeap = new MaxHeap();
-maxHeap.insert(10);
-maxHeap.insert(20);
-maxHeap.insert(5);
-maxHeap.insert(30);
+maxHeap.push(10);
+maxHeap.push(20);
+maxHeap.push(5);
+maxHeap.push(30);
 
-console.log(maxHeap.peek()); // Output: 30
-console.log(maxHeap.extractMax()); // Output: 30
-console.log(maxHeap.peek()); // Output: 20
-console.log(maxHeap.size()); // Output: 3
-console.log(maxHeap.isEmpty()); // Output: false
+console.log(maxHeap.peek); // Output: 30
+console.log(maxHeap.pop()); // Output: 30
+console.log(maxHeap.peek); // Output: 20
+console.log(maxHeap.size); // Output: 3
+console.log(maxHeap.isEmpty); // Output: false
   

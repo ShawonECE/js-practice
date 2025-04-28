@@ -85,18 +85,43 @@ class MinHeap {
             this.heapifyDown(smallest);
         }
     }
+
+    heapifyDown(index) {
+        let smallest = index;
+        let leftChildIndex = this.getLeftChildIndex(index);
+        let rightChildIndex = this.getRightChildIndex(index);
+    
+        while (leftChildIndex < this.heap.length) {
+            if (this.compare(this.heap[leftChildIndex], this.heap[smallest])) {
+                smallest = leftChildIndex;
+            }
+    
+            if (rightChildIndex < this.heap.length && this.compare(this.heap[rightChildIndex], this.heap[smallest])) {
+                smallest = rightChildIndex;
+            }
+    
+            if (smallest !== index) {
+                this.swap(index, smallest);
+                index = smallest;
+                leftChildIndex = this.getLeftChildIndex(index);
+                rightChildIndex = this.getRightChildIndex(index);
+            } else {
+                break;
+            }
+        }
+    } 
 }
 
 // Example usage:
 const minHeap = new MinHeap();
-minHeap.insert(10);
-minHeap.insert(20);
-minHeap.insert(5);
-minHeap.insert(30);
+minHeap.push(10);
+minHeap.push(20);
+minHeap.push(5);
+minHeap.push(30);
 
-console.log(minHeap.peek()); // Output: 5
-console.log(minHeap.extractMin()); // Output: 5
-console.log(minHeap.peek()); // Output: 10
-console.log(minHeap.size()); // Output: 3
-console.log(minHeap.isEmpty()); // Output: false
+console.log(minHeap.peek); // Output: 5
+console.log(minHeap.pop()); // Output: 5
+console.log(minHeap.peek); // Output: 10
+console.log(minHeap.size); // Output: 3
+console.log(minHeap.isEmpty); // Output: false
   
