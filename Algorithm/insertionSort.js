@@ -2,7 +2,7 @@ const insertionSort = (array) => {
     let length = array.length;
     for (let i = 1; i < length; i++) {
         let elementToInsert = array[i];
-        j = i - 1;
+        let j = i - 1;
 
         while (j >= 0 && array[j] > elementToInsert) {
             array[j + 1] = array[j];

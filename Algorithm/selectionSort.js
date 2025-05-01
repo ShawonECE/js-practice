@@ -1,5 +1,3 @@
-const array = [8, 10, 1, 3, -6, 0, 5, 7, -25, 5, -84, -197, 56];
-
 // time complexity is O(n^2)
 const selectionSort = (array) => {
     const length = array.length;
@@ -12,12 +10,11 @@ const selectionSort = (array) => {
             }
         }
         if (minIndex !== i) {
-            let temp = array[i];
-            array[i] = array[minIndex];
-            array[minIndex] = temp;
+            [array[i], array[minIndex]] = [array[minIndex], array[i]]; // swap
         }
     }
 };
 
+const array = [8, 10, 1, 3, -6, 0, 5, 7, -25, 5, -84, -197, 56];
 selectionSort(array);
 console.log(array);
